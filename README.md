@@ -6,6 +6,38 @@ This repository contains the code for `getgrass-bot`, a bot designed to establis
 
 `getgrass-bot` connects to a specified WebSocket server using both HTTP and SOCKS proxies. It leverages the `ws` library for WebSocket communication and integrates the `https-proxy-agent` and `socks-proxy-agent` libraries for enhanced proxy support. This allows for more versatile and resilient connections, accommodating a wider range of proxy types.
 
+## Nodejs
+```bash
+# Check Nodejs Version
+node --version
+# if 18, skip nodejs steps
+
+# Delete Nodejs old files
+sudo apt-get remove nodejs
+sudo apt-get purge nodejs
+sudo apt-get autoremove
+sudo rm /etc/apt/keyrings/nodesource.gpg
+sudo rm /etc/apt/sources.list.d/nodesource.list
+
+# Install Nodejs 18
+NODE_MAJOR=18
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+sudo apt-get update
+sudo apt-get install -y nodejs
+node --version
+
+# Install npm
+sudo apt-get install npm
+npm --version
+```
+
 ## Installation
 
 1. Clone this repository to your local machine:
